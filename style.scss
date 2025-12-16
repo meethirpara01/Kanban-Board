@@ -1,0 +1,230 @@
+:root {
+    --background-color: #0c0c0c;
+    --background-button-color: #009560;
+    --background-primary-color: #181818;
+    --background-task-color: #2a2a2a;
+    --background-delete-color: #ff4d4d;
+    --primary-text-color: #F2F2F2;
+
+    // PADDING VARIABLES
+    --nav-padding: 25px 40px;
+    --section-padding: 15px 40px;
+    --padding-s: 5px;
+    --padding-m: 10px;
+    --padding-l: 15px;
+    --padding-xl: 20px;
+    --padding-xxl: 30px;
+
+    // BORDER RADIUS VARIABLES
+    --border-radius-s: 5px;
+    --border-radius-m: 10px;
+    --border-radius-l: 15px;
+    --border-radius-xl: 20px;
+    --border-radius-xxl: 30px;
+
+
+    // FONT SIZE VARIABLES
+    --font-size-s: 5px;
+    --font-size-m: 12px;
+    --font-size-l: 15px;
+    --font-size-xl: 20px;
+    --font-size-xxl: 30px;
+}
+
+@font-face {
+    font-family: GilroyUltraLight;
+    src: url(./font/Gilroy-UltraLight.ttf);
+}
+
+@font-face {
+    font-family: NGL;
+    src: url(./font/NCLGasdrifo-Demo.otf);
+}
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    color: var(--primary-text-color);
+    font-family: GilroyUltraLight;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--nav-padding);
+        position: sticky;
+        top: 0;
+        background-color: var(--background-color);
+
+        .left {
+            h1 {
+                font-family: NGL;
+                font-size: var(--font-size-xxl);
+                background: url(./assets/mask\ Large_ZB4lGN8hWZ.png);
+                background-size: contain;
+                background-position: center center;
+                background-clip: text;
+                color: transparent;
+                position: relative;
+                letter-spacing: 2px;
+                line-height: 1.3;
+                text-align: center;
+            }
+
+            .bloom {
+                position: absolute;
+                filter: blur(20px) saturate(1);
+            }
+        }
+
+        .right {
+            .btn {
+                font-size: var(--font-size-m);
+                background-color: var(--background-button-color);
+                border: none;
+                outline: none;
+                color: var(--primary-text-color);
+                padding: var(--padding-m) var(--padding-l);
+                cursor: pointer;
+                border-radius: var(--border-radius-s);
+            }
+
+            .btn:active {
+                scale: 0.95;
+            }
+        }
+    }
+
+    section {
+        padding: var(--section-padding);
+        display: flex;
+        flex-grow: 1;
+        justify-content: space-between;
+        gap: var(--padding-xxl);
+
+        .task-column {
+            background-color: var(--background-primary-color);
+            padding: var(--padding-xl) var(--padding-xl);
+            border-radius: var(--border-radius-m);
+            display: flex;
+            flex-direction: column;
+            gap: var(--padding-xxl);
+            flex-grow: 1;
+            width: 100%;
+            transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+
+            .heading {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+            }
+
+            .task {
+                background-color: var(--background-task-color);
+                padding: var(--padding-m);
+                border-radius: var(--border-radius-m);
+                display: flex;
+                flex-direction: column;
+                cursor: grab;
+                gap: var(--padding-s);
+
+                button {
+                    align-self: flex-end;
+                    background-color: var(--background-delete-color);
+                    padding: var(--padding-s) var(--padding-l);
+                    border: none;
+                    outline: none;
+                    font-size: var(--font-size-l);
+                    border-radius: var(--border-radius-s);
+                    cursor: pointer;
+                    color: var(--primary-text-color);
+                }
+            }
+
+            button:active {
+                scale: 1.050;
+            }
+        }
+
+        .hover-over {
+            // border: 2px dashed #B3B3B3;
+            border: 2px dashed var(--primary-text-color);
+            scale: 1.03;
+        }
+    }
+}
+
+.model {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    .bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(61, 61, 61 , 0.404);
+        backdrop-filter: blur(5px);
+    }
+
+    .center {
+        background-color: var(--background-primary-color);
+        padding: var(--padding-xxl);
+        border-radius: var(--border-radius-m);
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-m);
+        z-index: 10;
+
+        input, textarea {
+            background-color: var(--background-task-color);
+            border: none;
+            outline: none;
+            color: var(--primary-text-color);
+            padding: var(--padding-m);
+            border-radius: var(--border-radius-s);
+        }
+
+        button {
+            background-color: var(--background-button-color);
+            border: none;
+            outline: none;
+            color: var(--primary-text-color);
+            padding: var(--padding-m) var(--padding-l);
+            border-radius: var(--border-radius-s);
+            cursor: pointer;
+            width: fit-content;
+            align-self: center;
+        }
+        
+        button:active {
+            scale: 1.030;
+        }
+    }
+}
+
+.modelActive {
+    display: flex;
+}
